@@ -1,0 +1,108 @@
+type Game @model @auth(rules: [{allow: owner}])  {
+  id: ID!
+  name: String!
+  mode: String!
+  phase: Phase!
+  turn: Int
+  speaker: Player
+  players: [Player]
+  objectives: [Objective]
+  agendas: [Agenda]
+  score: [Point]
+}
+
+type Player @model {
+  id: ID!
+  name: String!
+  color: Color!
+  faction: Faction!
+}
+
+type Faction {
+  id: ID!
+  name: String!
+  shortname: String!
+}
+
+type Point @model {
+  id: ID!
+  player: Player!
+  type: PointType
+  objective: Objective
+  turn: Int!
+}
+
+type Objective {
+  id: ID!
+  type: ObjectiveType!
+  name: String!
+  text: String!
+  value: Int!
+  revealed: Boolean!
+}
+
+type Agenda {
+  id: ID!
+  name: String!
+  electedPlayer: Player
+  electedPlanet: Planet
+}
+
+type Planet {
+  id: ID!
+  name: String!
+  resources: Int!
+  influence: Int!
+  trait: Trait
+  specialty: Technology
+}
+
+enum Mode {
+  NORMAL
+  LONG
+  RUSH
+  TRILIGHT
+}
+
+enum Phase {
+  SETUP
+  STRATEGY
+  ACTION
+  STATUS
+  AGENDA
+  END
+}
+
+enum Trait {
+  CULTURAL
+  HAZARDOUS
+  INDUSTRIAL
+}
+
+enum Technology {
+  BIONIC
+  WARFARE
+  PROPULSION
+  CYBERNETIC
+}
+
+enum ObjectiveType {
+  PUBLIC
+  SECRET
+}
+
+enum PointType {
+  CUSTODIAN
+  OBJECTIVE
+  LAW
+  PROMISARY
+}
+
+enum Color {
+  BLACK
+  BLUE
+  GREEN
+  PURPLE
+  RED
+  YELLOW
+}
