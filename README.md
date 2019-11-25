@@ -14,6 +14,6 @@ The intent is to show the board on a large screen (television or monitor) and co
 
 *Coming soon*
 
- -[ ] Twilight Imperium
- -[ ] Arkham Horror
- -[ ] Eldritch Horror
+ - [ ] Twilight Imperium
+ - [ ] Arkham Horror
+ - [ ] Eldritch Horror
